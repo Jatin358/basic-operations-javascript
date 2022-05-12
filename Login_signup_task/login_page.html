@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+    <head>
+
+    </head>
+    <style>
+        .login-container{
+            border: 2px solid blue;
+            height: 100%;
+            padding: 20px;
+            background-color: aqua;
+            width: 30%;
+            margin: auto;
+        }
+        input{
+            margin-bottom: 20px;
+        }
+        .sign-up{
+            text-align: center;
+        }
+    </style>
+    <script>
+        function submitForm(){
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            var retrievedData = sessionStorage.getItem('data');
+            var data = JSON.parse(retrievedData);
+            if(data ==null || data.length == 0){
+                alert('Please enter Login Credentials')
+                return;
+            }
+            for(let i=0; i<data.length; i++){
+                console.log(data[i]);
+                if(data[i].email == email && data[i].password == password){
+                    // alert('Login Successful');
+                    console.log("Success");
+                    window.location.href = 'file:///home/jatin.chugh/html_css_javascript/login_page/home_page.html';
+                }else{
+                    alert('Login Failed');
+                }
+            }
+            
+
+        }
+    </script>
+    <body>
+        <div class="login-container">
+            <h2 class="sign-up">LOGIN</h2>
+      
+                <label>Email:</label><br/>
+                <input type="text" id="email" required/><br/>
+                <label>Password:</label><br/>
+                <input type="password" id="password" required/><br/>
+                <input type="submit" value="Submit" onclick="submitForm()"><br />
+      
+            <span>Dont have an account : </span><a href="/home/jatin.chugh/html_css_javascript/login_page/signup_page.html">Sign Up</a>
+        </div>
+    </body>
+</html>
